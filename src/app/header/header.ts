@@ -1,30 +1,25 @@
 import { Component } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatDialogModule,
-    RouterModule
-  ],
-  templateUrl: './header.html',
-  styleUrls: ['./header.scss'],
+selector: 'app-header',
+standalone: true,
+imports: [
+RouterModule
+],
+templateUrl: './header.html',
+styleUrl: './header.scss',
 })
 export class Header {
 
-  constructor(public dialog: MatDialog ) { }
+isNavOpen = false;
 
-  openLoginForm() {
-  console.log('opening dialog...');
-  this.dialog.open(LoginComponent, {
-    width: '500px',
-    height: '450px'
-  });
+toggleNav(): void {
+this.isNavOpen = !this.isNavOpen;
+}
+
+closeNav(): void {
+this.isNavOpen = false;
 }
 
 }

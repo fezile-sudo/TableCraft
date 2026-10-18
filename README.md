@@ -1,59 +1,68 @@
-# ConFusion
+TableCraft
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+TableCraft is a restaurant website built with Angular, featuring a modern interface for exploring dishes, viewing restaurant information, and interacting with menu items.
 
-## Development server
+Features
+Home: Featured dishes and restaurant highlights.
+Menu: Browse dishes by category.
+Dish Details: View individual dish information and comments.
+Comments: Submit ratings and comments for dishes.
+About: Learn about the restaurant and its team.
+Contact: View contact information and use the contact form.
+Responsive Design: Styling for a range of screen sizes.
+Built With
+Angular
+TypeScript
+HTML and SCSS
+Angular Material
+RxJS
+Node.js backend API
+MongoDB Atlas
+Backend
 
-To start a local development server, run:
+The Angular application communicates with the TableCraft backend API, hosted on Render.
 
-```bash
-ng serve
-```
+Production API: https://confusion-restaurant-4n5i.onrender.com/api
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The backend provides endpoints for dishes, comments, and team information.
 
-## Code scaffolding
+Getting Started
+Prerequisites
+Node.js and npm
+Angular CLI
+A running backend API
+Installation
+Clone this repository:
+git clone https://github.com/fezile-sudo/TableCraft.git
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Navigate into the project:
+cd TableCraft
 
-```bash
-ng generate component component-name
-```
+Install dependencies:
+npm install
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Start the development server:
+npm start
 
-```bash
-ng generate --help
-```
+Open the local URL shown in the terminal, usually http://localhost:4200.
+Environment Configuration
 
-## Building
+The application uses separate environment files:
 
-To build the project run:
+src/environments/environment.ts — production API URL.
+src/environments/environment.development.ts — local development API URL.
 
-```bash
-ng build
-```
+For local development, ensure the backend is running at http://localhost:5000, or update the development API URL to match your backend.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build
 
-## Running unit tests
+Create a production build with:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+npm run build
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
+The generated application files are placed in dist/conFusion/browser.
 
-For end-to-end (e2e) testing, run:
+License
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+No license has been specified yet.

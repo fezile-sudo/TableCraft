@@ -1,13 +1,26 @@
-export class Dish {
-  constructor(
-    public id: string,
-    public name: string,
-    public image: string,
-    public category: string,
-    public featured: boolean,
-    public label: string,
-    public price: string,
-    public description: string,
-    public comments: any[] = []
-  ) {}
+
+export interface Comment {
+  _id?: string;
+  dishId?: string;
+  rating: number;
+  author: string;
+  comment: string;
+  createdAt?: string;
+  updatedAt?: string;
+  date?: string;
+}
+
+
+export interface Dish {
+  _id?: string;
+  id?: string;
+  name: string;
+  image: string;
+  category: string;
+  label?: string;
+  price: number;
+  featured?: boolean;
+  description: string;
+
+  comments?: Comment[];
 }

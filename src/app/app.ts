@@ -4,7 +4,6 @@ import { Header } from './header/header';
 import { Footer } from './footer/footer';
 import { RouterOutlet } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
-import { LoginComponent } from './login/login';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -25,7 +24,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     Footer,
     RouterOutlet,
     MatDialogModule,
-    LoginComponent,
     MatFormFieldModule, 
     MatInputModule,
     MatCheckboxModule,

@@ -1,31 +1,69 @@
-import { Component } from '@angular/core';
+
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef
+} from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
+
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish';
-import { Promotion } from '../shared/promotion';
-import { PromotionService } from '../services/promotion';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule
+    RouterModule
   ],
   templateUrl: './home.html',
-  styleUrl: './home.scss',
+  styleUrl: './home.scss'
 })
-export class Home {
-  
-  dish!: Dish;
-  promotion!: Promotion;
+export class Home implements OnInit {
 
-  constructor(private dishservice: DishService,
-    private promotionservice: PromotionService) { }
+  dishes: Dish[] = [];
+  featuredDishes: Dish[] = [];
 
-  ngOnInit() {
-    this.dish = this.dishservice.getFeaturedDish();
-    this.promotion = this.promotionservice.getFeaturedPromotion();
+  loading = true;
+  error = '';
+
+  constructor(
+    private dishService: DishService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.loadDishes();
+  }
+
+  loadDishes(): void {
+    this.loading = true;
+    this.error = '';
+
+    this.dishService.getDishes().subscribe({
+      next: (dishes: Dish[]) => {
+        this.dishes = dishes;
+
+        this.featuredDishes = dishes.filter(
+          (dish: Dish) => dish.featured
+        );
+
+        this.loading = false;
+
+        this.cdr.markForCheck();
+      },
+
+      error: (error: unknown) => {
+        console.error('Home dishes error:', error);
+
+        this.error = 'Unable to load dishes.';
+        this.loading = false;
+
+        this.cdr.markForCheck();
+      }
+    });
   }
 }
+

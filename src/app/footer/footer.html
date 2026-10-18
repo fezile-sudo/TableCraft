@@ -1,43 +1,120 @@
-<div class="container footer" 
-    fxLayout="row wrap" 
-    fxLayout.lt-md="column" 
-    fxLayoutAlign="center center" 
-    fxLayoutGap="10px">
+<footer class="footer"> <div class="container">
+<div class="footer-grid">
 
-  <div fxFlex="100" fxFlex.gt-sm="50">
-    <div fxLayout="row">
-      <div fxFlex="40" fxFlexOffset="20px">
-        <h4>Links</h4>
-        <mat-list>
-          <mat-list-item><a mat-button routerLink="/home">Home</a></mat-list-item>
-          <mat-list-item><a mat-button routerLink="/about">About</a></mat-list-item>
-          <mat-list-item><a mat-button routerLink="/menu">Menu</a></mat-list-item>
-          <mat-list-item><a mat-button routerLink="/contactus">Contact</a></mat-list-item>
-        </mat-list>
-      </div>
-      <div fxFlex="55">
-        <h4>Our Address</h4>
-        <address style="text-size: 80%">
-          121, Clear Water Bay Road<br> Clear Water Bay, Kowloon<br> HONG KONG<br>
-          <i class="fa fa-phone"></i>: +852 1234 5678<br>
-          <i class="fa fa-fax"></i>: +852 8765 4321<br>
-          <i class="fa fa-envelope"></i>:
-          <a href="mailto:confusion@food.net">confusion@food.net</a>
-        </address>
-      </div>
+<div class="footer-brand-column">
+
+    <h4 class="footer-brand">TableCraft</h4>
+
+    <p class="footer-tagline">Modern African Dining</p>
+
+    <p class="footer-description">
+      A contemporary celebration of African
+      flavours, culture and hospitality.
+    </p>
+
+  </div>
+
+  <div class="footer-navigation">
+
+    <h5>Explore</h5>
+
+    <ul class="footer-links">
+
+      <li>
+        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/about" routerLinkActive="active">
+          Our Story
+        </a>
+
+      </li>
+
+      <li>
+        <a routerLink="/menu" routerLinkActive="active">
+          Menu
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link">
+          Contact
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <div class="footer-location">
+
+    <h5>Find Us</h5>
+
+    <address>
+
+      <strong>TableCraft</strong>
+      <br />
+
+      18 Baakens Valley Road
+      <br />
+
+      Central, Gqeberha
+      <br />
+
+      Eastern Cape, South Africa
+      <br /><br />
+
+      <a href="tel:+27415550186">
+        <i class="fa fa-phone"></i>
+        +27 41 555 0186
+      </a>
+
+      <br />
+
+      <a href="mailto:hello@confusion.co.za">
+        <i class="fa fa-envelope"></i>
+        hello@confusion.co.za
+      </a>
+
+    </address>
+
+  </div>
+
+  <div class="footer-social-column">
+
+    <h5>Follow</h5>
+
+    <div class="footer-social">
+
+      <a href="#instagram" aria-label="Instagram">
+        <i class="fa fa-instagram"></i>
+      </a>
+
+      <a href="#facebook" aria-label="Facebook">
+        <i class="fa fa-facebook"></i>
+      </a>
+
+      <a href="#twitter" aria-label="Twitter">
+        <i class="fa fa-twitter"></i>
+      </a>
+
     </div>
+
   </div>
-  <div fxFlex="100" fxFlex.gt-sm="45">
-    <div style="text-align:center">
-      <a mat-icon-button class="btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus fa-lg"></i></a>
-      <a mat-icon-button class="btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook fa-lg"></i></a>
-      <a mat-icon-button class="btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin fa-lg"></i></a>
-      <a mat-icon-button class="btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter fa-lg"></i></a>
-      <a mat-icon-button class="btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube fa-lg"></i></a>
-      <a mat-icon-button class="btn-mail" href="mailto:"><i class="fa fa-envelope-o fa-lg"></i></a>
-    </div>
-  </div>
-  <div>
-      <p>© Copyright 2018 Ristorante Con Fusion</p>
-  </div>
+
 </div>
+
+<div class="footer-bottom">
+
+  <p>© 2026 Confusion. All rights reserved.</p>
+
+  <p class="footer-project-note">
+    A portfolio project inspired by a Coursera learning project.
+  </p>
+
+</div>
+
+</div> </footer>

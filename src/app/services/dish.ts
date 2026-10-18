@@ -1,20 +1,47 @@
 import { Injectable } from '@angular/core';
-import { Dish } from '../shared/dish';
-import { DISHES } from '../shared/dishes';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { Dish, Comment } from '../shared/dish';
+
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DishService {
-  
-  getDishes(): Dish[] {
-    return DISHES;
+
+  private readonly apiUrl = `${environment.apiUrl}/dishes`;
+  private readonly commentsUrl = `${environment.apiUrl}/comments`;
+
+  constructor(private http: HttpClient) {}
+
+  getDishes(): Observable<Dish[]> {
+    return this.http.get<Dish[]>(this.apiUrl);
   }
-  getDish(id: string): Dish | undefined {
-  return DISHES.find((dish) => dish.id === id);
+
+  getDish(id: string): Observable<Dish> {
+    return this.http.get<Dish>(`${this.apiUrl}/${id}`);
+  }
+
+  getComments(dishId: string): Observable<Comment[]> {
+    return this.http.get<Comment[]>(
+      `${this.commentsUrl}/dish/${dishId}`
+    );
+  }
+
+  addComment(comment: {
+    dishId: string;
+    rating: number;
+    author: string;
+    comment: string;
+  }): Observable<Comment> {
+
+    return this.http.post<Comment>(
+      this.commentsUrl,
+      comment
+    );
+  }
+
 }
 
-  getFeaturedDish(): Dish {
-    return DISHES.filter((dish) => dish.featured)[0];
-  }
-}

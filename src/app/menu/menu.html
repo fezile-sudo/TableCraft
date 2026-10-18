@@ -1,24 +1,198 @@
-<div class="container">
-<mat-grid-list cols="2" rowHeight="200px" gutterSize="30px">
+<!-- Menu Hero -->
+<section class="menu-hero">
+  <div class="container">
+    <div class="menu-hero-content">
+      <span class="section-label">The Confusion kitchen</span>
 
-  <mat-grid-tile *ngFor="let dish of dishes" 
-                  [routerLink]="['/dishdetail', dish.id]">
+      <h1>Our Menu</h1>
 
-    <mat-card class="dish-card">
+      <p>
+        African flavours, familiar ingredients and a little bit
+        of curiosity. Explore the dishes coming out of our kitchen.
+      </p>
+    </div>
+  </div>
+</section>
 
-      <img mat-card-image [src]="dish.image" [alt]="dish.name">
-
-      <mat-card-content>
-        <h3>{{ dish.name }}</h3>
-        <p>{{ dish.description | slice:0:60 }}...</p>
-      </mat-card-content>
-
-    </mat-card>
-
-  </mat-grid-tile>
-
-</mat-grid-list>
+<div *ngIf="loading" class="container menu-loading">
+  <p>Loading our menu...</p>
 </div>
+
+<div *ngIf="!loading && error" class="container menu-loading">
+  <h3>Something went wrong</h3>
+
+  <p>We couldn't load the menu. Please try again.</p>
+
+  <button type="button" (click)="loadMenu()">Try again</button>
+</div>
+
+<main *ngIf="!loading && !error" class="menu-content">
+  <div class="container">
+
+    <section *ngIf="starters.length > 0" class="menu-section">
+      <div class="menu-section-heading">
+        <div>
+          <span class="section-label">01 — Starters</span>
+          <h2>Start with something unexpected.</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div *ngFor="let dish of starters" class="col-12 col-md-6">
+          <article class="confusion-menu-card">
+            <a [routerLink]="['/dishdetail', dish._id]" class="menu-card-link">
+              <div class="menu-image-wrapper">
+                <img class="menu-card-image" [src]="dish.image" [alt]="dish.name" loading="lazy" />
+
+                <span *ngIf="dish.label" class="menu-label">
+                  {{ dish.label }}
+                </span>
+              </div>
+
+              <div class="menu-card-body">
+                <div class="menu-card-heading">
+                  <h3>{{ dish.name }}</h3>
+                  <span class="menu-price">R{{ dish.price }}</span>
+                </div>
+
+                <p>{{ dish.description }}</p>
+
+                <span class="view-dish">View dish →</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="mains.length > 0" class="menu-section">
+      <div class="menu-section-heading">
+        <div>
+          <span class="section-label">02 — Mains</span>
+          <h2>The heart of the table.</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div *ngFor="let dish of mains" class="col-12 col-md-6" >
+          <article class="confusion-menu-card">
+            <a [routerLink]="['/dishdetail', dish._id]" class="menu-card-link" >
+              <div class="menu-image-wrapper">
+                <img class="menu-card-image" [src]="dish.image" [alt]="dish.name" loading="lazy" />
+
+                <span *ngIf="dish.label" class="menu-label">
+                  {{ dish.label }}
+                </span>
+              </div>
+
+              <div class="menu-card-body">
+                <div class="menu-card-heading">
+                  <h3>{{ dish.name }}</h3>
+                  <span class="menu-price">R{{ dish.price }}</span>
+                </div>
+
+                <p>{{ dish.description }}</p>
+
+                <span class="view-dish">View dish →</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="sides.length > 0" class="menu-section">
+      <div class="menu-section-heading">
+        <div>
+          <span class="section-label">03 — Sides</span>
+          <h2>Made to share.</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div *ngFor="let dish of sides" class="col-12 col-md-6" >
+          <article class="confusion-menu-card">
+           <a [routerLink]="['/dishdetail', dish._id]" class="menu-card-link">
+              <div class="menu-image-wrapper">
+                <img class="menu-card-image" [src]="dish.image" [alt]="dish.name" loading="lazy" />
+
+                <span *ngIf="dish.label" class="menu-label">
+                  {{ dish.label }}
+                </span>
+              </div>
+
+              <div class="menu-card-body">
+                <div class="menu-card-heading">
+                  <h3>{{ dish.name }}</h3>
+                  <span class="menu-price">R{{ dish.price }}</span>
+                </div>
+
+                <p>{{ dish.description }}</p>
+
+                <span class="view-dish">View dish →</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="desserts.length > 0" class="menu-section">
+      <div class="menu-section-heading">
+        <div>
+          <span class="section-label">04 — Desserts</span>
+          <h2>Something sweet to finish.</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div *ngFor="let dish of desserts" class="col-12 col-md-6" >
+          <article class="confusion-menu-card">
+            <a [routerLink]="['/dishdetail', dish._id]" class="menu-card-link" >
+              <div class="menu-image-wrapper">
+                <img class="menu-card-image" [src]="dish.image" [alt]="dish.name" loading="lazy" />
+
+                <span *ngIf="dish.label" class="menu-label">
+                  {{ dish.label }}
+                </span>
+              </div>
+
+              <div class="menu-card-body">
+                <div class="menu-card-heading">
+                  <h3>{{ dish.name }}</h3>
+                  <span class="menu-price">R{{ dish.price }}</span>
+                </div>
+
+                <p>{{ dish.description }}</p>
+
+                <span class="view-dish">View dish →</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section *ngIf="!loading && !error" class="menu-bottom" >
+  <div class="container">
+    <div class="menu-bottom-content">
+      <span class="section-label">Good food takes time</span>
+
+      <h2>Come hungry.</h2>
+
+      <p>
+        Our menu changes with the seasons, the ingredients
+        available to us, and occasionally, whatever idea our
+        chef can't stop thinking about.
+      </p>
+    </div>
+  </div>
+</section>
+
+
 
 
 

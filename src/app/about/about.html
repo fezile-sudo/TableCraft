@@ -1,75 +1,244 @@
 
-<div class="container"
-  fxLayout="column"
-  fxLayoutGap="10px">
+<div class="about-page">
 
-  <div fxFlex>
-    <div>
-        <h3>About Us</h3>
-        <hr>
+  <div class="container">
+
+    <div class="about-page-header">
+
+      <span class="section-label">
+        TABLECRAFT
+      </span>
+
+      <h3>
+        Our Story
+      </h3>
+
+      <hr>
+
+    </div>
+
+  </div>
+
+ <section class="about-intro">
+
+    <div class="container">
+
+      <div class="row align-items-center">
+
+        <div class="col-12 col-md-7">
+
+          <span class="section-label">
+            Where tradition meets imagination
+          </span>
+
+          <h1>
+            We don't want to
+            <br>
+            forget where food comes from.
+          </h1>
+
+        </div>
+
+        <div class="col-12 col-md-5">
+
+          <p>
+            TableCraft is a modern African dining experience
+            inspired by the people, ingredients and food
+            traditions of Southern Africa.
+          </p>
+
+          <p>
+            We take familiar flavours and give them room to
+            evolve — without losing the stories behind them.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+ <section class="about-history">
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-12 col-md-7">
+
+          <span class="section-label">
+            Our beginning
+          </span>
+
+          <h2>
+            Born from a love
+            <br>
+            of the Eastern Cape.
+          </h2>
+
+          <p>
+            TableCraft began as a simple idea between friends
+            who shared a belief: African food deserves a place
+            at the centre of the modern dining conversation.
+          </p>
+
+          <p>
+            What started as experimental dinners grew into a
+            restaurant concept built around fire, spice,
+            seasonal ingredients and the memories that come
+            with food.
+          </p>
+
+          <p>
+            Our kitchen draws inspiration from the Eastern Cape
+            and the wider Southern African region, while
+            remaining curious about flavours from everywhere.
+          </p>
+
+        </div>
+
+
+        <div class="col-12 col-md-4 offset-md-1">
+
+          <mat-card class="about-facts-card">
+
+            <mat-card-header>
+
+              <mat-card-title>
+                TableCraft at a glance
+              </mat-card-title>
+
+            </mat-card-header>
+
+            <mat-card-content>
+
+              <div class="about-facts-list">
+
+                <div class="about-fact">
+                  <span>Founded</span>
+                  <strong>2024</strong>
+                </div>
+
+                <div class="about-fact">
+                  <span>Location</span>
+                  <strong>Gqeberha</strong>
+                </div>
+
+                <div class="about-fact">
+                  <span>Cuisine</span>
+                  <strong>Modern African</strong>
+                </div>
+
+                <div class="about-fact">
+                  <span>Kitchen</span>
+                  <strong>Open Fire</strong>
+                </div>
+
+                <div class="about-fact">
+                  <span>Philosophy</span>
+                  <strong>Heritage</strong>
+                </div>
+
+              </div>
+
+            </mat-card-content>
+
+          </mat-card>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+ <section class="about-philosophy">
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-12 col-md-5">
+
+          <span class="section-label">
+            Our philosophy
+          </span>
+
+          <h2>
+            Food should
+            <br>
+            tell a story.
+          </h2>
+
+        </div>
+
+
+        <div class="col-12 col-md-6 offset-md-1">
+
+          <blockquote>
+            "We want you to recognise something familiar
+            on the plate — and then experience it in a way
+            you didn't expect."
+          </blockquote>
+
+          <span class="quote-author">
+            — The TableCraft Kitchen
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+<section class="about-team">
+  <div class="container">
+    <h2>Meet the team</h2>
+
+    <div class="team-list">
+      <article class="team-member" *ngFor="let leader of leaders">
+        <img [src]="leader.image" [alt]="leader.name" class="team-member-image">
+
+        <h3>{{ leader.name }}</h3>
+        <p>{{ leader.designation }}</p>
+        <p>{{ leader.description }}</p>
+      </article>
     </div>
   </div>
+</section>
 
-  <div fxFlex>
-    <div fxLayout="column" fxLayout.gt-sm="row">
-      <div fxFlex="70">
-        <h2>Our History</h2>
-        <p>Started in 2010, Ristorante con Fusion quickly established itself as a culinary icon par excellence in Hong Kong. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in Hong Kong.  Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.</p>
-        <p>The restaurant traces its humble beginnings to <em>The Frying Pan</em>, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</p>
+<section class="about-closing">
+
+    <div class="container">
+
+      <div class="about-closing-content">
+
+        <span class="section-label">
+          Around the table
+        </span>
+
+        <h2>
+          Good food brings
+          <br>
+          people together.
+        </h2>
+
+        <p>
+          At TableCraft, every dish is an invitation to
+          share something — a memory, a story, a laugh,
+          or simply a good meal.
+        </p>
+
       </div>
-      <div fxFlex="30">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>
-            <h2>Facts At a Glance</h2>
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <dl>
-              <dt>Started</dt>
-              <dd>3 Feb. 2013</dd>
-              <dt>Major Stake Holder</dt>
-              <dd>HK Fine Foods Inc.</dd>
-              <dt>Last Year's Turnover</dt>
-              <dd>$1,250,375</dd>
-              <dt>Employees</dt>
-              <dd>40</dd>
-            </dl>
-          </mat-card-content>
-        </mat-card>
-      </div>
+
     </div>
-  </div>
 
-  <div fxFlex>
-    <mat-card>
-      <blockquote>
-        <h3>You better cut the pizza in four pieces because
-            I'm not hungry enough to eat six.</h3>
-       
-      </blockquote>
-       <footer>-- Yogi Berra,
-          <cite>The Wit and Wisdom of Yogi Berra,
-            P. Pepe, Diversion Books, 2014</cite>
-        </footer>
-    </mat-card>
-  </div>
+  </section>
 
-
-  <div fxFlex>
-    <h2>Corporate Leadership</h2>
-      <mat-list fxFlex>
-    <mat-list-item *ngFor="let leader of leaders">
-      <img matListAvatar src={{leader.image}} alt={{leader.name}}>
-      <h1 matLine> {{leader.name}} </h1>
-      <p matLine>
-        <span> {{leader.designation}} </span>
-        <span class="demo-2"> -- {{leader.description}} </span>
-      </p>
-    </mat-list-item>
-  </mat-list>
-
-
-
-  </div>
 </div>
+

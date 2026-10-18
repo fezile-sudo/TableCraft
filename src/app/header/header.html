@@ -1,29 +1,82 @@
-<mat-toolbar color="primary">
-  <span><img src="images/logo.png" height=30 width=41></span>
-  <a mat-button routerLink="/home" routerLinkActive="active"><span class="fa fa-home fa-lg"></span> Home</a>
-  <a mat-button routerLink="/about" routerLinkActive="active"><span class="fa fa-info fa-lg"></span> About</a>
-  <a mat-button routerLink="/menu" routerLinkActive="active"><span class="fa fa-list fa-lg"></span> Menu</a>
-  <a mat-button routerLink="/contact" routerLinkActive="active"><span class="fa fa-address-card fa-lg"></span> Contact</a>
-   <span class="flex-spacer"></span>
-  <a mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> Login</a>
-</mat-toolbar>
+<nav class="main-navbar">
 
-<div class="container jumbotron"
-    fxLayout="row"
-    fxLayout.sm="column" 
-    fxLayout.xs="column" 
-    fxLayoutAlign.xs="start center"
-    fxLayoutAlign.sm="start center" 
-    fxLayoutAlign.gt-sm="center center" 
-    fxLayoutGap="10px">
+  <div class="container">
 
-  <div fxFlex fxFlex.gt-sm="50%">
-    <h1>Ristorante Con Fusion</h1>
-    <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations
-      will tickle your culinary senses!</p>
+    <a
+      class="restaurant-brand"
+      routerLink="/home"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+
+      <span class="brand-name">TABLECRAFT</span>
+
+      <span class="brand-tagline">
+        Modern African Dining
+      </span>
+
+    </a>
+
+    <button
+      type="button"
+      class="navbar-toggler"
+      (click)="toggleNav()"
+      [attr.aria-expanded]="isNavOpen"
+      aria-controls="main-navigation"
+      aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+
+    </button>
+
+    <div
+      id="main-navigation"
+      class="main-navbar-collapse"
+      [class.is-open]="isNavOpen">
+
+      <nav class="main-nav">
+
+        <a
+          routerLink="/home"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link"
+          (click)="closeNav()">
+          Home
+        </a>
+
+        <a
+          routerLink="/about"
+          routerLinkActive="active"
+          class="nav-link"
+          (click)="closeNav()">
+          Our Story
+        </a>
+
+        <a
+          routerLink="/menu"
+          routerLinkActive="active"
+          class="nav-link"
+          (click)="closeNav()">
+          Menu
+        </a>
+
+        <a
+          routerLink="/contact"
+          routerLinkActive="active"
+          class="nav-link"
+          (click)="closeNav()">
+          Contact
+        </a>
+
+      </nav>
+
+    </div>
+
   </div>
-  <div fxFlex fxFlex.gt-sm="20%">
-    <img src="images/logo.png" alt="Logo">
-  </div>
-  <div fxFlex></div>
-</div>
+
+</nav>
+

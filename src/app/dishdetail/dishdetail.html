@@ -1,52 +1,267 @@
-<div class="container">
-  <div class="col-4 m-5">
-<div *ngIf="dish">
 
-  <mat-card class="example-card" appearance="outlined">
+<div class="dish-detail-page">
 
-    <mat-card-header>
-      <mat-card-title>
-        {{ dish.name }}
-      </mat-card-title>
-    </mat-card-header>
-
-    <img mat-card-image [src]="dish.image" [alt]="dish.name">
-
-    <mat-card-content>
-      <p>{{ dish.description }}</p>
-    </mat-card-content>
-
-    <mat-card-actions>
-      <button mat-button (click)="goBack()">BACK</button>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  
-  </mat-card>
-</div>
+<div *ngIf="loading" class="container">
+  <p>Loading dish...</p>
 </div>
 
-  <!-- COMMENTS SECTION -->
-  <div *ngIf="dish?.comments?.length">
+<div *ngIf="!loading && error" class="container">
+  <h2>Unable to load dish</h2>
+  <p>{{ error }}</p>
+  <button type="button" (click)="goBack()">
+    Back
+  </button>
+</div>
 
-    <h3>Comments</h3>
+<main *ngIf="!loading && !error && dish" class="container">
+  <!-- Keep your existing dish details and comments markup here. -->
+</main>
+ 
+  <div class="container dish-loading" *ngIf="loading">
 
-    <mat-list>
-      <mat-list-item *ngFor="let comment of dish?.comments">
+    <p>Loading dish...</p>
 
-        <span matListItemTitle>{{ comment.comment }}</span>
+  </div>
 
-        <span matListItemLine>
-          {{ comment.rating }} Stars
-        </span>
+  <div class="container dish-loading" *ngIf="!loading && error">
 
-        <span matListItemLine>
-          {{ comment.author }} {{ comment.date | date:'shortDate' }}
-        </span>
+    <h3>Dish not found</h3>
 
-      </mat-list-item>
-    </mat-list>
+    <p>{{ error }}</p>
+
+    <button mat-raised-button type="button" (click)="goBack()">
+      Back to Menu
+    </button>
+
+  </div>
+
+  <main class="container dish-detail-content" *ngIf="!loading && !error && dish">
+
+    <div class="dish-detail-grid">
+
+      <section class="dish-card">
+
+        <div class="dish-image-wrapper">
+
+          <img class="dish-image" [src]="dish.image" [alt]="dish.name">
+
+          <span class="dish-label" *ngIf="dish.label">
+            {{ dish.label }}
+          </span>
+
+        </div>
+
+
+        <div class="dish-card-content">
+
+          <div class="dish-title-row">
+
+            <h1>{{ dish.name }}</h1>
+
+            <span class="dish-price">
+              R{{ dish.price }}
+            </span>
+
+          </div>
+
+
+          <p class="dish-description">
+            {{ dish.description }}
+          </p>
+
+
+          <button mat-stroked-button type="button" (click)="goBack()">
+            ← Back to Menu
+          </button>
+
+        </div>
+
+      </section>
+
+      <section class="comments-section">
+
+        <div class="comments-header">
+
+          <div>
+
+            <span class="section-label">
+              Guest thoughts
+            </span>
+
+            <h2>Comments</h2>
+
+          </div>
+
+          <span class="comment-count">
+            {{ comments.length }}
+          </span>
+
+        </div>
+
+        <div class="no-comments" *ngIf="comments.length === 0">
+
+          <p>
+            No comments yet.
+            Be the first to share your thoughts.
+          </p>
+
+        </div>
+
+        <div class="comments-list" *ngIf="comments.length > 0">
+
+          <article class="comment" *ngFor="let comment of comments">
+
+            <div class="comment-rating">
+
+              <span *ngFor="let star of [1, 2, 3, 4, 5]" [class.active]="star <= comment.rating">
+                ★
+              </span>
+
+            </div>
+
+
+            <p class="comment-text">
+              {{ comment.comment }}
+            </p>
+
+
+            <p class="comment-author">
+
+              — {{ comment.author }}
+
+              <span *ngIf="comment.createdAt">
+                ,
+                {{ comment.createdAt | date:'longDate' }}
+              </span>
+
+              <span *ngIf="!comment.createdAt && comment.date">
+                ,
+                {{ comment.date | date:'longDate' }}
+              </span>
+
+            </p>
+
+          </article>
+
+        </div>
+
+        <div class="add-comment">
+
+          <button mat-raised-button type="button" (click)="openCommentDialog()">
+            Add Comment
+          </button>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <div class="comment-modal-backdrop" *ngIf="commentDialogOpen">
+
+    <div class="comment-modal" (click)="$event.stopPropagation()">
+
+      <div class="comment-modal-header">
+
+        <h2>Add Comment</h2>
+
+        <button type="button" class="modal-close" (click)="closeCommentDialog()" aria-label="Close">
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="comment-modal-body">
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>
+            Rating
+          </mat-label>
+
+          <mat-select [(ngModel)]="newComment.rating">
+
+            <mat-option [value]="1">
+              1
+            </mat-option>
+
+            <mat-option [value]="2">
+              2
+            </mat-option>
+
+            <mat-option [value]="3">
+              3
+            </mat-option>
+
+            <mat-option [value]="4">
+              4
+            </mat-option>
+
+            <mat-option [value]="5">
+              5
+            </mat-option>
+
+          </mat-select>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>
+            Your Name
+          </mat-label>
+
+          <input matInput type="text" [(ngModel)]="newComment.author" placeholder="Your name">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+          <mat-label>
+            Comment
+          </mat-label>
+
+          <textarea
+            matInput
+            rows="5"
+            [(ngModel)]="newComment.comment"
+            placeholder="Tell us what you thought...">
+          </textarea>
+
+        </mat-form-field>
+
+
+        <div class="comment-modal-actions">
+
+          <button mat-button type="button" (click)="closeCommentDialog()">
+            Cancel
+          </button>
+
+          <button
+            mat-raised-button
+            type="button"
+            [disabled]="
+              !newComment.author.trim() ||
+              !newComment.comment.trim()
+            "
+            (click)="submitComment()"
+          >
+            Submit
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
 </div>
+
+
+

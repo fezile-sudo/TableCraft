@@ -1,0 +1,269 @@
+.dish-detail-page {
+  min-height: 70vh;
+  background: #f7f3ed;
+  color: #25221f;
+}
+
+.dish-loading {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.dish-detail-content {
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+.dish-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 70px;
+  align-items: start;
+}
+
+.dish-card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(37, 34, 31, 0.1);
+}
+
+.dish-image-wrapper {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #ddd5cb;
+}
+
+.dish-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.dish-label {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 7px 12px;
+  background: #a66a3f;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dish-card-content {
+  padding: 35px;
+}
+
+.dish-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.dish-title-row h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  font-weight: 500;
+}
+
+.dish-price {
+  flex-shrink: 0;
+  color: #a66a3f;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.dish-description {
+  margin: 0 0 30px;
+  color: #68615b;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.comments-section {
+  padding-top: 10px;
+}
+
+.comments-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.comments-header h2 {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.section-label {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #a66a3f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.comment-count {
+  min-width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(37, 34, 31, 0.15);
+  border-radius: 50%;
+  font-size: 0.85rem;
+}
+
+.no-comments {
+  padding: 25px 0;
+  border-top: 1px solid rgba(37, 34, 31, 0.12);
+  border-bottom: 1px solid rgba(37, 34, 31, 0.12);
+}
+
+.no-comments p {
+  margin: 0;
+  color: #77716b;
+  line-height: 1.7;
+}
+
+.comments-list {
+  border-top: 1px solid rgba(37, 34, 31, 0.12);
+}
+
+.comment {
+  padding: 25px 0;
+  border-bottom: 1px solid rgba(37, 34, 31, 0.12);
+}
+
+.comment-rating {
+  margin-bottom: 10px;
+  color: #d2cbc3;
+  letter-spacing: 2px;
+}
+
+.comment-rating span.active {
+  color: #a66a3f;
+}
+
+.comment-text {
+  margin: 0 0 10px;
+  line-height: 1.7;
+}
+
+.comment-author {
+  margin: 0;
+  color: #77716b;
+  font-size: 0.9rem;
+}
+
+.add-comment {
+  margin-top: 30px;
+}
+
+.comment-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(20, 18, 16, 0.7);
+}
+
+.comment-modal {
+  width: 100%;
+  max-width: 550px;
+  background: #fff;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+.comment-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 30px;
+  border-bottom: 1px solid rgba(37, 34, 31, 0.1);
+}
+
+.comment-modal-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.modal-close {
+  border: 0;
+  background: transparent;
+  font-size: 2rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  color: #77716b;
+}
+
+.comment-modal-body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-modal-body mat-form-field {
+  width: 100%;
+}
+
+.comment-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+
+  .dish-detail-content {
+    padding-top: 50px;
+    padding-bottom: 70px;
+  }
+
+  .dish-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .dish-card-content {
+    padding: 25px;
+  }
+
+  .dish-title-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .comments-header h2 {
+    font-size: 2rem;
+  }
+
+  .comment-modal-body {
+    padding: 22px;
+  }
+
+}
+

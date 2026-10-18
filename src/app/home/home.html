@@ -1,36 +1,284 @@
-<div class="container"
-     fxLayout="row"
-     fxLayout.sm="column"
-     fxLayout.xs="column"
-     fxLayoutAlign.gt-md="space-around center"
-     fxLayoutGap="10px">
+<div class="home-page">
 
-<mat-card *ngIf="dish" fxFlex>
-  <mat-card-header>
-    <div mat-card-avatar></div>
-    <mat-card-title>
-      <h3>{{dish.name}}</h3>
-    </mat-card-title>
-  </mat-card-header>
-  <img mat-card-image src={{dish.image}} alt={{dish.name}}>
-  <mat-card-content>
-    <p>{{dish.description}}
-    </p>
-  </mat-card-content>
-</mat-card>
+  <section class="home-hero">
 
-<mat-card *ngIf="promotion" fxFlex>
-  <mat-card-header>
-    <div mat-card-avatar></div>
-    <mat-card-title>
-      <h3>{{promotion.name}}</h3>
-    </mat-card-title>
-  </mat-card-header>
-  <img mat-card-image src={{promotion.image}} alt={{promotion.name}}>
-  <mat-card-content>
-    <p>{{promotion.description}}
-    </p>
-  </mat-card-content>
-</mat-card>
+    <div class="container">
+
+      <div class="home-hero-content">
+
+        <span class="section-label">
+          TABLECRAFT · MODERN AFRICAN DINING
+        </span>
+
+        <h1>
+          African food.
+          <br>
+          Made differently.
+        </h1>
+
+        <p>
+          A contemporary restaurant inspired by
+          the flavours, ingredients and stories
+          of Southern Africa.
+        </p>
+
+        <div class="home-hero-buttons">
+
+          <a routerLink="/menu" class="btn confusion-btn-primary">
+            Explore the menu
+          </a>
+
+          <a routerLink="/aboutus" class="btn confusion-btn-outline">
+            Our story
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="home-intro">
+
+    <div class="container">
+
+      <div class="row align-items-center">
+
+        <div class="col-12 col-md-5">
+
+          <span class="section-label">
+            The TableCraft kitchen
+          </span>
+
+          <h2>
+            Familiar flavours.
+            <br>
+            Unexpected ideas.
+          </h2>
+
+        </div>
+
+        <div class="col-12 col-md-6 offset-md-1">
+
+          <p>
+            TableCraft is about taking the food
+            we know and love and looking at it
+            from a different angle.
+          </p>
+
+          <p>
+            From the fire of the braai to the
+            warmth of Cape Malay spices, our
+            kitchen brings together tradition,
+            creativity and modern technique.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="home-featured">
+
+    <div class="container">
+
+      <div class="home-section-heading">
+
+        <div>
+
+          <span class="section-label">
+            From our kitchen
+          </span>
+
+          <h2>A few things we're cooking.</h2>
+
+        </div>
+
+        <a routerLink="/menu" class="text-link">
+          View full menu →
+        </a>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-12 col-md-4" *ngFor="let dish of featuredDishes">
+
+          <a [routerLink]="['/dishdetail', dish._id]" class="menu-card-link">
+
+            <div class="featured-dish-image">
+
+              <img
+                [src]="dish.image"
+                [alt]="dish.name">
+
+              <span
+                *ngIf="dish.label"
+                class="menu-label">
+                {{ dish.label }}
+              </span>
+
+            </div>
+
+
+            <div class="featured-dish-content">
+
+              <div class="featured-dish-heading">
+
+                <h3>{{ dish.name }}</h3>
+
+                <span>R{{ dish.price }}</span>
+
+              </div>
+
+              <p>{{ dish.description }}</p>
+
+              <span class="view-dish">
+                Discover dish →
+              </span>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="home-experience">
+
+    <div class="container">
+
+      <div class="row align-items-center">
+
+        <div class="col-12 col-md-6">
+
+          <div class="experience-block">
+
+            <span class="experience-number">
+              01
+            </span>
+
+            <h2>
+              Fire
+            </h2>
+
+            <p>
+              Cooking over fire is at the
+              heart of our kitchen. Smoke,
+              char and slow cooking bring
+              depth to familiar ingredients.
+            </p>
+
+          </div>
+
+
+          <div class="experience-block">
+
+            <span class="experience-number">
+              02
+            </span>
+
+            <h2>
+              Spice
+            </h2>
+
+            <p>
+              From peri-peri to Cape Malay
+              spice, we use bold flavours
+              without losing the character
+              of the ingredients.
+            </p>
+
+          </div>
+
+
+          <div class="experience-block">
+
+            <span class="experience-number">
+              03
+            </span>
+
+            <h2>
+              Heritage
+            </h2>
+
+            <p>
+              Our food takes inspiration from
+              Southern African cooking and
+              gives traditional ideas a new
+              place at the table.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="col-12 col-md-5 offset-md-1">
+
+          <div class="experience-quote">
+
+            <span>
+              OUR PHILOSOPHY
+            </span>
+
+            <blockquote>
+              "Good food doesn't have
+              to choose between where
+              it came from and where
+              it's going."
+            </blockquote>
+
+            <small>
+              — The TableCraft Kitchen
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="home-cta">
+
+    <div class="container">
+
+      <div class="home-cta-content">
+
+        <span class="section-label">
+          Your table is waiting
+        </span>
+
+        <h2>Come hungry.</h2>
+
+        <p>
+          Explore the menu and discover
+          something you didn't expect.
+        </p>
+
+        <a routerLink="/menu" class="btn confusion-btn-primary">
+          Explore the menu
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
 
 </div>
